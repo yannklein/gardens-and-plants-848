@@ -8,9 +8,22 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% if false %>
+      <% if @plants.any? %>
         <div class="container">
           <div class="row">
+            
+            <% @plants.each do |plant| %>
+              <div class="col-4 mb-3">
+                  <div class="card-trip">
+                    <img src="<%= plant.image_url %>" />
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= plant.name %></h2>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            <% end %> 
           </div>
         </div>
       <% else %>
@@ -19,7 +32,12 @@
     </div>
     <div class="col-4">
       <h2>Add a plant:</h2>
-      <p>TBD</p>
+      <%= simple_form_for [@garden, @plant] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :image_url %>
+        <%= f.submit %>
+      <% end %>
+      
     </div>
   </div>
 </div>
