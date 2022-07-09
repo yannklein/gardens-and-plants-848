@@ -1,7 +1,8 @@
 if Rails.env.development?
   puts "Destroying all the gardens and tags..."
-  # Plant.destroy_all not needed becaue we have dependent destroy
+  # Plant.destroy_all not needed because we have dependent destroy
   Garden.destroy_all
+  Tag.destroy_all
 end
 
 puts "Seed gardens..."
@@ -55,6 +56,14 @@ Plant.create!(
     image_url: "http://livedan330.com/wp-content/uploads/SGPinkHydrangea.jpg",
   garden: shinjuku
 )
+
+puts "Creating tags"
+
+tag_names = ["edible", "tree", "indoor", "outdoor", "high-mainte", "flower", "weed", "poisonous", "cat friendly"]
+
+tag_names.each do |tag_name|
+  Tag.create!(name: tag_name)
+end
   
 puts "Seeding done!"
   

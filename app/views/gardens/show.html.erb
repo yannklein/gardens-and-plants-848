@@ -12,17 +12,7 @@
         <div class="container">
           <div class="row">
             <% @plants.each do |plant| %>
-              <div class="col-6 col-lg-4 mb-3">
-                  <div class="card-trip">
-                    <img src="<%= plant.image_url %>" />
-                    <div class="card-trip-infos d-flex align-items-center justify-content-between">
-                      <h2><%= plant.name %></h2>
-                      <%= link_to plant_path(plant), method: :delete do %>
-                        <i class="fas fa-skull-crossbones"></i>
-                      <% end %>
-                    </div>
-                  </div>
-              </div>
+              <%= render 'plant_card', plant: plant %>
             <% end %> 
           </div>
         </div>
